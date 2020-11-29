@@ -40,10 +40,18 @@
 
       <hr class="sidebar-divider">
 
+      <li class="nav-item">
+      <a class="nav-link" href="tps.php">
+        <i class="fas fa-users"></i>
+        <span>Data TPS</span></a>
+      </li>
+
+      <hr class="sidebar-divider">
+
     <li class="nav-item">
-    <a class="nav-link" href="">
+    <a class="nav-link" href="teamKordes.php">
       <i class="fas fa-users"></i>
-      <span>Data Pemilih</span></a>
+      <span>Data Team Kordes</span></a>
     </li>
 
     <hr class="sidebar-divider">

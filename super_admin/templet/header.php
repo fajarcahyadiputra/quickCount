@@ -9,7 +9,7 @@
     <meta name="description" content="this is aplikasi akutansi">
     <meta name="author" content="">
    <!--  <link href="img/logo/logo.png" rel="icon"> -->
-    <title>coba</title>
+    <title>Aplikasi Couic Count</title>
     <!-- jquery -->
     <script src="./assets/ruangAdmin/vendor/jquery/jquery.min.js"></script>
     <!-- fontawesome -->

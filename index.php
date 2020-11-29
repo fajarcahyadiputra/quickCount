@@ -2,6 +2,10 @@
 session_start();
 include 'functions/db.php';
 
+if(isset($_SESSION['username'])){
+    header('location: super_admin/index.php');
+}
+
 if(isset($_POST['check'])){
 	$username   = strtolower(trim($_POST['username']));
 	$password   = sha1($_POST['password']);

@@ -25,10 +25,10 @@ if(isset($_GET['get'])){
 		$data = mysqli_fetch_array($get);
 
 		echo json_encode($data);
-	}elseif($get == 'data_admin'){
+	}elseif($get == 'dataKordes'){
 		$id  = $_POST['id'];
 		
-		$get = mysqli_query($link, "SELECT * FROM tb_user WHERE id=$id");
+		$get = mysqli_query($link, "SELECT * FROM team_kordes WHERE id=$id");
 		$data = mysqli_fetch_array($get);
 
 		echo json_encode($data);
@@ -43,6 +43,13 @@ if(isset($_GET['get'])){
 
 
 		echo json_encode($data_desa);
+	}elseif($get === 'dataTps'){
+		$id  = $_POST['id'];
+		
+		$get = mysqli_query($link, "SELECT * FROM tps WHERE id=$id");
+		$data = mysqli_fetch_array($get);
+
+		echo json_encode($data);
 	}
 }
 

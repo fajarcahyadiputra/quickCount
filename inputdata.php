@@ -95,6 +95,7 @@ if(empty($_SESSION['username'])) {
                       type: 'POST',
                       dataType: 'JSON',
                       success: function(hasil){
+                        $('#desa').html(``)
                         hasil.map((data)=>{
                           $('#desa').append(`<option value='${data[2]}'>${data[2]}</option>`)
                         })

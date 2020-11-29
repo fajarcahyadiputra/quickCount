@@ -73,26 +73,55 @@ if(isset($_GET['tambah'])){
             header('location: desa.php');
 		}
 		
-	}elseif($get == 'data_admin'){
-		if(isset($_POST['tambah_admin'])){
-			$kode = $_POST['kode'];
-			$nama = $_POST['nama'];
-			$username = $_POST['username'];
-			$password = sha1($_POST['password']);
-			$email = $_POST['email'];
-			$jenis_kelamin = $_POST['jenis_kelamin'];
-			$status_aktif = 'aktif';
-			$tanggal_buat = date('Y-m-d');
-			$role = 'admin';
+	}elseif($get == 'data_kordes'){
+		if(isset($_POST['tambahKordes'])){
 
-			$insert = mysqli_query($koneksi,"INSERT INTO tb_user VALUES('','$kode','$nama','$username','$password','$email','$status_aktif','$tanggal_buat','$role','$jenis_kelamin')");
+			$nama 		   = $_POST['nama'];
+			$jenis_kelamin = $_POST['jenis_kelamin'];
+			$no_hp 		   = $_POST['no_hp'];
+			$alamat 	   = $_POST['alamat'];
+
+			$insert = mysqli_query($link,"INSERT INTO team_kordes VALUES('','$nama','$jenis_kelamin','$no_hp','$alamat')");
 			if($insert){
-				echo "<script>alert('Data Berhasil di masukan..!'); document.location.href='data_admin.php'</script>";
+                $_SESSION['pesan'] = 'Data Berhasil DI Tambah';
+                $_SESSION['warna'] = 'success';
+                 header('location: teamKordes.php');
 			}else{
-				echo "<script>alert('Data Gagal di masukan..!'); document.location.href='data_admin.php'</script>";
+                $_SESSION['pesan'] = 'Data Gagal DI Tambah';
+                $_SESSION['danger'] = 'success';
+                header('location: teamKordes.php');
 			}
 		}else{
-			echo "<script>alert('Data Gagal di masukan..!'); document.location.href='data_admin.php'</script>";
+			$_SESSION['pesan'] = 'Data Gagal DI Tambah';
+                $_SESSION['danger'] = 'success';
+                header('location: teamKordes.php');
+		}
+	}else if($get === 'data_tps'){
+		if(isset($_POST['tambahTps'])){
+
+			$nama 		   = $_POST['nama'];
+			$jumblah_suara = $_POST['jumblah_suara'];
+			
+			$foto = upload();
+
+			if(!$foto){
+				return false;
+			}
+
+			$insert = mysqli_query($link,"INSERT INTO tps VALUES('','$nama','$jumblah_suara','$foto')");
+			if($insert){
+                $_SESSION['pesan'] = 'Data Berhasil DI Tambah';
+                $_SESSION['warna'] = 'success';
+                 header('location: tps.php');
+			}else{
+                $_SESSION['pesan'] = 'Data Gagal DI Tambah';
+                $_SESSION['danger'] = 'success';
+                header('location: tps.php');
+			}
+		}else{
+			$_SESSION['pesan'] = 'Data Gagal DI Tambah';
+                $_SESSION['danger'] = 'success';
+                header('location: tps.php');
 		}
 	}
 }
@@ -131,7 +160,7 @@ function upload(){
 
 
 
-	move_uploaded_file($tempat, 'foto_kandidat/' . $ektensifilebaru);
+	move_uploaded_file($tempat, 'assets/tps/' . $ektensifilebaru);
 
 	return $ektensifilebaru;
 }

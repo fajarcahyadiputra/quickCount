@@ -41,13 +41,30 @@ if(isset($_GET['hapus'])){
             $_SESSION['warna'] = 'danger';
             header('location: kecamatan.php');
 		}
-	}elseif($get == 'data_admin'){
+	}elseif($get == 'dataKordes'){
 		$id = $_GET['id'];
-		$delete = mysqli_query($link, "DELETE FROM tb_user WHERE id=$id");
-		if($delete){
-			header('location: data_admin.php');
+		$delete = mysqli_query($link, "DELETE FROM team_kordes WHERE id=$id");
+        if($delete){
+            $_SESSION['pesan'] = 'Data Berhasil Terhapus';
+            $_SESSION['warna'] = 'success';
+            header('location: teamKordes.php');
 		}else{
-			echo mysqli_error($link);
+            $_SESSION['pesan'] = 'Data Berhasil Terhapus';
+            $_SESSION['warna'] = 'danger';
+            header('location: teamKordes.php');
+		}
+	}else if($get === 'dataTps'){
+		$id = $_GET['id'];
+		$delete = mysqli_query($link, "DELETE FROM tps WHERE id=$id");
+        if($delete){
+			$_SESSION['pesan'] = 'Data Berhasil Terhapus';
+			$_SESSION['warna'] = 'success';
+			unlink('assets/tps/'.$_GET['foto']);
+            header('location: tps.php');
+		}else{
+            $_SESSION['pesan'] = 'Data Berhasil Terhapus';
+            $_SESSION['warna'] = 'danger';
+            header('location: tps.php');
 		}
 	}
 }

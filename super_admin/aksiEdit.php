@@ -126,8 +126,84 @@ if(isset($_GET['edit'])){
                 $_SESSION['warna'] = 'danger';
                 header('location: desa.php');
         }
-    
 	
+	}else if($get === 'dataKordes'){
+
+		if(isset($_POST['editKordes'])){
+			$id         = $_POST['id'];
+			$nama 		   = $_POST['nama'];
+			$jenis_kelamin = $_POST['jenis_kelamin'];
+			$no_hp 		   = $_POST['no_hp'];
+			$alamat 	   = $_POST['alamat'];
+
+		$edit = mysqli_query($link, "UPDATE team_kordes SET 
+			nama 				= '$nama',
+			jenis_kelamin        = '$jenis_kelamin',
+			no_hp        		= '$no_hp',
+			alamat        		= '$alamat'
+			WHERE id=$id
+			");
+		if($edit){
+			$_SESSION['pesan'] = 'Data Berhasil DI edit';
+			$_SESSION['warna'] = 'success';
+			header('location: teamKordes.php');
+			
+		}else{
+			$_SESSION['pesan'] = 'Data Gagal Di Edit';
+			$_SESSION['warna'] = 'danger';
+			header('location: teamKordes.php');
+			// echo mysqli_error($link);
+		}
+
+
+	}else{
+		$_SESSION['pesan'] = 'Data Gagal Di Edit';
+			$_SESSION['warna'] = 'danger';
+			header('location: teamKordes.php');
+	}
+	}else if($get === 'dataTps'){
+		if(isset($_POST['editTps'])){
+
+            $id         = $_POST['id'];
+            $nama       = $_POST['nama'];
+			$jumblah_suara   = $_POST['jumblah_suara'];
+			$foto_lama = $_POST['foto_lama'];
+			
+			$foto  = $_FILES['foto_baru']['name'];
+			if(!$foto){
+				$foto = $foto_lama;
+			}else{
+				$foto  = upload();
+				unlink('assets/tps/'. $foto_lama);
+				if(!$foto){
+					return error;
+				}
+			}
+    
+            $edit = mysqli_query($link, "UPDATE tps SET 
+                nama 				= '$nama',
+                jumblah_suara        = '$jumblah_suara',
+                foto       			 = '$foto'
+                WHERE id=$id
+                ");
+            if($edit){
+                $_SESSION['pesan'] = 'Data Berhasil DI edit';
+                $_SESSION['warna'] = 'success';
+                header('location: tps.php');
+                
+            }else{
+                $_SESSION['pesan'] = 'Data Gagal Di Edit';
+                $_SESSION['warna'] = 'danger';
+                header('location: tps.php');
+                // echo mysqli_error($link);
+            }
+    
+    
+        }else{
+            $_SESSION['pesan'] = 'Data Gagal Di Edit';
+                $_SESSION['warna'] = 'danger';
+                header('location: tps.php');
+        }
 	}
 }
 
@@ -167,7 +243,7 @@ function upload(){
 
 
 
-	move_uploaded_file($tempat, 'foto_kandidat/' . $ektensifilebaru);
+	move_uploaded_file($tempat, 'assets/tps/' . $ektensifilebaru);
 
 	return $ektensifilebaru;
 }

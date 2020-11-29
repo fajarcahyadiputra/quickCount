@@ -13,8 +13,9 @@
     <link rel="icon" type="image/png" href="img/tondi.png">
     <title>Hitung Cepat Real Count Pilkada Padang Lawas 2018 | Admin Panel</title>
     <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+        <script src="../super_admin/assets/ruangAdmin/vendor/jquery/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
     <script type="text/javascript" src="js/custom.js"></script>
     <script type="text/javascript" src="js/jquery.inputmask.bundle.js"></script>
 </head>
