@@ -1,11 +1,11 @@
-<?php require_once "view/header.php"; 
-
+<?php ; 
+session_start();
 if(empty($_SESSION['username'])) {
-	header('Location: index.php');
+	Header('Location: ../index.php');
 } else {
+  require_once "view/header.php"
 
 ?>
-
 
 
 <div class="navbar-fixed">

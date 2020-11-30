@@ -1,11 +1,14 @@
 <?php
+session_start();
+if(empty($_SESSION['username'])) {
+	Header('Location: ../index.php');
+} else {
+
 include_once 'templet/header.php';
 include_once 'templet/sidebar.php';
 
-if(empty($_SESSION['username'])) {
-	header('Location: ../index.php');
-} else {
 ?>
+
   <!-- Container Fluid-->
   <div class="container-fluid" id="container-wrapper">
 
@@ -28,4 +31,4 @@ if(empty($_SESSION['username'])) {
 <!---Container Fluid-->
 </div>
 
-<?php include_once 'templet/footer.php'; } ?>
+<?php  include_once 'templet/footer.php'; } ?>

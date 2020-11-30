@@ -1,12 +1,13 @@
-<?php 
- include_once 'templet/header.php';
- include_once 'templet/sidebar.php';
+<?php
+session_start();
 if(empty($_SESSION['username'])) {
-	header('Location: ../index.php');
+	Header('Location: ../index.php');
 } else {
 
-	?>
+include_once 'templet/header.php';
+include_once 'templet/sidebar.php';
 
+?>
 	<div class="container-fluid" id="container-wrapper">
 		<div class="card mb-5" >
 			<div class="card-header" style="background-color:mintcream">

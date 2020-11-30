@@ -1,3 +1,12 @@
+<?php ; 
+session_start();
+if(empty($_SESSION['username'])) {
+	Header('Location: ../index.php');
+} else {
+
+?>
+
+
 <?php require_once "view/header.php"; ?>
 <div class="navbar-fixed">
         <nav class="teal accent-4">
@@ -311,4 +320,4 @@ if(isset($_GET['hapus']))
 </div>
 <!-- Penutup Modal Hapus -->
 
-<?php require_once "view/footer.php" ?>
+<?php require_once "view/footer.php"; } ?>
